@@ -1,0 +1,652 @@
+USE [master]
+GO
+/****** Object:  Database [db_aa579f_prog3w2]    Script Date: 18/07/2024 18:14:59 ******/
+CREATE DATABASE [db_aa579f_prog3w2]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'db_aa579f_prog3w2_Data', FILENAME = N'H:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\db_aa579f_prog3w2_DATA.mdf' , SIZE = 8192KB , MAXSIZE = 102400KB , FILEGROWTH = 10%)
+ LOG ON 
+( NAME = N'db_aa579f_prog3w2_Log', FILENAME = N'H:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\db_aa579f_prog3w2_Log.LDF' , SIZE = 3072KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT, LEDGER = OFF
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET COMPATIBILITY_LEVEL = 160
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [db_aa579f_prog3w2].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET  MULTI_USER 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET QUERY_STORE = ON
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30), DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_STORAGE_SIZE_MB = 1000, QUERY_CAPTURE_MODE = AUTO, SIZE_BASED_CLEANUP_MODE = AUTO, MAX_PLANS_PER_QUERY = 200, WAIT_STATS_CAPTURE_MODE = ON)
+GO
+USE [db_aa579f_prog3w2]
+GO
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 18/07/2024 18:15:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[albaniles]    Script Date: 18/07/2024 18:15:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[albaniles](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Nombre] [nvarchar](100) NOT NULL,
+	[Apellido] [nvarchar](100) NOT NULL,
+	[Dni] [nvarchar](max) NOT NULL,
+	[Telefono] [nvarchar](max) NULL,
+	[Calle] [nvarchar](max) NULL,
+	[Numero] [nvarchar](max) NULL,
+	[CodPost] [nvarchar](max) NULL,
+	[Activo] [bit] NOT NULL,
+	[FechaAlta] [datetime2](7) NULL,
+ CONSTRAINT [PK_albaniles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[albaniles_x_obras]    Script Date: 18/07/2024 18:15:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[albaniles_x_obras](
+	[Id] [uniqueidentifier] NOT NULL,
+	[IdAlbanil] [uniqueidentifier] NOT NULL,
+	[IdObra] [uniqueidentifier] NOT NULL,
+	[TareaARealizar] [nvarchar](max) NOT NULL,
+	[FechaAlta] [datetime2](7) NULL,
+ CONSTRAINT [PK_albaniles_x_obras] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[deportes]    Script Date: 18/07/2024 18:15:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[deportes](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Nombre] [nvarchar](max) NOT NULL,
+	[Descripcion] [nvarchar](max) NULL,
+	[FechaAlta] [datetime2](7) NOT NULL,
+ CONSTRAINT [PK_deportes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[obras]    Script Date: 18/07/2024 18:15:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[obras](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Nombre] [nvarchar](max) NOT NULL,
+	[DatosVarios] [nvarchar](max) NOT NULL,
+	[IdTipoObra] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_obras] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[roles]    Script Date: 18/07/2024 18:15:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[roles](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Nombre] [nvarchar](max) NOT NULL,
+	[Descripcion] [nvarchar](max) NULL,
+	[KeyRol] [int] NOT NULL,
+ CONSTRAINT [PK_roles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[socios]    Script Date: 18/07/2024 18:15:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[socios](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Email] [nvarchar](max) NOT NULL,
+	[Activo] [bit] NOT NULL,
+	[Nombre] [nvarchar](100) NOT NULL,
+	[Apellido] [nvarchar](100) NOT NULL,
+	[Dni] [nvarchar](max) NOT NULL,
+	[IdDeporte] [uniqueidentifier] NOT NULL,
+	[Telefono] [nvarchar](max) NULL,
+	[Calle] [nvarchar](max) NULL,
+	[Numero] [nvarchar](max) NULL,
+	[CodPost] [nvarchar](max) NULL,
+	[Provincia] [nvarchar](max) NULL,
+	[Ciudad] [nvarchar](max) NULL,
+	[FechaAlta] [datetime2](7) NULL,
+ CONSTRAINT [PK_socios] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tipos_obras]    Script Date: 18/07/2024 18:15:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tipos_obras](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Nombre] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_tipos_obras] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[usuarios]    Script Date: 18/07/2024 18:15:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[usuarios](
+	[Id] [uniqueidentifier] NOT NULL,
+	[Email] [nvarchar](max) NOT NULL,
+	[Password] [nvarchar](max) NOT NULL,
+	[Nombre] [nvarchar](max) NOT NULL,
+	[Apellido] [nvarchar](max) NULL,
+	[IdRol] [uniqueidentifier] NOT NULL,
+	[Activo] [bit] NOT NULL,
+	[FechaAlta] [datetime2](7) NULL,
+	[FechaModificacion] [datetime2](7) NULL,
+	[Telefono] [nvarchar](max) NULL,
+	[Calle] [nvarchar](max) NULL,
+	[Numero] [nvarchar](max) NULL,
+	[CodPost] [nvarchar](max) NULL,
+	[Provincia] [nvarchar](max) NULL,
+	[Ciudad] [nvarchar](max) NULL,
+ CONSTRAINT [PK_usuarios] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20240705135708_primera', N'6.0.2')
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'52225e41-b38e-4c31-b595-012297dd351a', N'joaquin', N'sa', N'aaaa', NULL, NULL, NULL, NULL, 1, CAST(N'2024-07-11T12:29:12.8794325' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'9db38c0e-fa18-4c78-8463-03c219510dcf', N'Prueba2', N'Testing', N'895635', N'5686', N'Savio', N'Test', N'5000', 1, CAST(N'2024-07-18T02:43:22.5659951' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'bd708acb-01a2-47d3-aa8c-06708cd04007', N'asdasd', N'asdasd', N'98asdf55656alñsfll', N'', N'', N'', N'', 1, CAST(N'2024-07-18T16:07:44.9046644' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'09abb29f-d75b-4eef-de97-08dca37879fc', N'Sergio', N'Galiano', N'22564067', N'3513026884', N'Las chanclas', N'1250', N'5000', 1, CAST(N'2024-07-13T17:14:58.9452848' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'789b1e37-ef66-4a5d-a0a8-117eb153426f', N'aaaaaaa', N'string', N'string', N'string', N'string', N'string', N'string', 1, CAST(N'2024-07-17T19:17:12.4470000' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'feed1b12-d9f6-439e-a53f-13abbe36ae86', N'Jorge', N'Gomez', N'17598463', N'351467985', N'Calle', N'12', N'4587', 0, NULL)
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'73122b48-68c2-421c-81dd-145f765ab95d', N'Prueba187', N'prueba', N'4444444', N'2966331010', N'Prueba', N'1234', NULL, 1, CAST(N'2024-07-18T19:12:12.9613750' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'b206be49-8ee5-4798-8240-166bc4616a39', N'asdasd', N'asdasd', N'98asdf55656alñsfascll', N'', N'', N'', N'', 1, CAST(N'2024-07-18T16:09:56.9006432' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'deaffd46-34d1-4cad-9d01-2460ed42fd72', N'NH Rules', N'Horenstein', N'1212121', N'4545555', N'La calle', N'2235', N'5008', 1, CAST(N'2024-07-18T17:19:42.3070920' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'00e34506-80cc-4c2b-9b1b-269ffdb2a67e', N'Test', N'Test', N'415156712', N'351346467', N'string', N'2435', N'5012', 1, CAST(N'2024-07-16T20:25:09.9771606' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'92f2b727-5a68-4543-be92-2805cf3fecc1', N'Luca', N'Aghes', N'43211232', N'2932673272', N'aaa', N'555', N'2312', 1, CAST(N'2024-07-17T03:09:33.0017585' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'f955852a-2cf1-4d80-8f61-2978624f6ef1', N'PruebaDeAsignacion1', N'asdasdas', N'43121212', N'2222222222', N'aaa', N'223', N'1234', 1, CAST(N'2024-07-18T20:05:53.1187815' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'3fa85f64-5717-4562-b3fc-2c963f66afa6', N'Juan', N'Carlo', N'90123123', NULL, NULL, NULL, NULL, 1, NULL)
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'3fa85f64-5717-4562-b3fc-2c963f66afa7', N'albañilPrueba', N'string', N'89', N'87676', N'string', N'898', N'7868', 1, CAST(N'2024-07-16T01:10:36.6970000' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'3fa85f64-5717-4562-b3fc-2c963f66afb4', N'albanilBien', N'string', N'888', N'232', N'string', N'32', N'323', 1, CAST(N'2024-07-16T01:54:28.8370000' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'f487ac1e-6a22-41ce-92e3-2ec6d4150a96', N'asd', N'asda', N'43282738', N'29662839273', N'asdasd', N'1232', NULL, 1, CAST(N'2024-07-18T19:27:13.4322077' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'55fea1fe-9720-4c66-b937-2f18c322b46d', N'string', N'string', N'stringasasdasdsd', N'string', N'string', N'string', N'string', 1, CAST(N'2024-07-18T04:22:41.2102948' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'777f2f70-f2d2-4862-9cca-3234a1ec0c57', N'Luca', N'Zunino', N'43232321', N'2966331010', N'aaaa', N'223', NULL, 1, CAST(N'2024-07-18T19:19:09.9892276' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'f3d1557f-b207-4de9-8f5e-3343da12182d', N'as', N'asas', N'1421', N'1414', N'asas', N'1414', N'1414', 1, CAST(N'2024-07-18T15:34:02.9323809' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'684a94ee-e22f-4c63-9476-34657f760fe4', N'assa', N'asasas', N'1418', N'1414', N'assaas', N'1414', N'141', 1, CAST(N'2024-07-18T14:00:38.0638860' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'368dab0b-a7cd-4e01-b827-3496317985f9', N'asdnasdnasd', N'askdamnsdnkas', N'alkdjnefjknewjkdnfwj', N'asd', N'', N'', N'', 1, CAST(N'2024-07-18T16:42:56.4518692' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'5c8bed7b-84d5-465d-91c7-38f449a441c2', N'pepitopruebaaaaa', N'pepeeeeeee', N'asdasdasd', N'dsasdadas', N'sdasda', N'asddas', N'asdasddas', 1, CAST(N'2024-07-18T18:23:39.6390000' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'88d238aa-3d36-43e8-84cc-460fc12b701b', N'prueba', N'prueba', N'12123123', N'1231212123', N'calle', N'1234', N'1234', 1, CAST(N'2024-07-16T15:36:30.3830210' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'ef359869-326f-4f1c-a278-49a533a747cd', N'yyyyyy', N'yyyyyyy', N'1111111', NULL, NULL, NULL, NULL, 1, NULL)
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'3ec9ee99-a56d-42ca-9321-4a13b7b3b7b4', N'pepitoprueba', N'aaaaaaaaa', N'asddsasda', N'asdsdadsa', N'sdasda', N'dasdsa', N'asdasdasd', 1, CAST(N'2024-07-18T18:02:19.1250000' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'c0578990-98cd-4bfb-9135-4bec6250ff49', N'sasaas', N'asasas', N'1425', N'1414', N'asas', N'14', N'1414', 1, CAST(N'2024-07-18T16:15:44.8305024' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'0f65feb4-9eb0-4c8c-944d-591a6b98a4d6', N'zzzzzzzzzzzzz', N'zzzzzzzzzzzzz', N'222222222', NULL, NULL, NULL, NULL, 1, NULL)
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'65a8de45-cbbe-419d-961d-5bc21fb034de', N'string', N'string', N'1414', N'string', N'string', N'string', N'string', 1, CAST(N'2024-07-18T17:04:25.3686788' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'1a4f6f18-d31e-4c57-8e7b-5d1ae3f86228', N'asdasd', N'asdasd', N'98asdf55656alñsfasclladasdasd', N'', N'', N'', N'', 1, CAST(N'2024-07-18T16:11:18.2454458' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'71cba01e-d00a-4f9a-bf1d-5d33b036bf74', N'sasaas', N'asasas', N'1526', N'4114', N'asas', N'141', N'1414', 1, CAST(N'2024-07-18T15:38:40.5186013' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'4c63e86f-814e-4155-b422-64b0004b71d6', N'string', N'string', N'string', NULL, NULL, NULL, NULL, 1, CAST(N'2024-07-17T17:48:11.1854534' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'9fb93465-9742-4303-9d34-654df79f8463', N'joaquin', N'kokkokkujuh', N'jidejfiejigj', NULL, NULL, NULL, NULL, 1, CAST(N'2024-07-17T17:25:15.4599644' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'70846e23-8631-49fc-b2fd-68f52e68d295', N'string', N'string', N'string', N'string', N'string', N'string', N'string', 1, CAST(N'2024-07-13T02:54:53.3460000' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'5d6a752c-5e71-4e4b-ab3c-697803ec5ee5', N'albanilDesdeSwagger', N'string', N'4342', N'4324', N'string', N'4324', N'324', 1, CAST(N'2024-07-16T07:05:18.2810000' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'6422d2ae-2a15-4597-8138-69f0c8890fd0', N'', N'', N'', N'', N'', N'', N'', 1, CAST(N'2024-07-15T21:14:24.0021178' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'03696944-9f9a-4ba4-ac3b-6b5abe386529', N'asdasdas', N'asdasdasd', N'amlasfmmnkaw', N'', N'', N'', N'', 1, CAST(N'2024-07-18T16:24:19.6932195' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'c0b8ef51-e394-4658-929f-6cd6429bc0fb', N'asdmamnd', N'aslkdmk', N'amkdmkasmkd', N'sndfnmsm', N'', N'', N'', 1, CAST(N'2024-07-18T16:44:07.6659628' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'6bc39bfc-1cf2-484e-823c-6da2b3d703fb', N'as', N'asas', N'1419', N'1414', N'asas', N'1414', N'1414', 1, CAST(N'2024-07-18T15:31:25.8124335' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'd51cb80e-12fc-4b7f-b377-71498c91844e', N'as', N'sa', N'1415', N'14114', N'asas', N'1414', N'1414', 1, CAST(N'2024-07-18T13:31:33.7896845' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'60e11097-4cac-4657-813c-74f3ac7c2db3', N'PruebaApiResponse2', N'aaaaa', N'43453211', N'12', N'asd', N'123', N'21', 1, CAST(N'2024-07-18T20:54:56.8790188' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'334a74fd-7e6e-4ad4-8374-760e5b22da54', N'Juan', N'Villegas', N'39686868', NULL, NULL, NULL, NULL, 0, NULL)
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'b56ed500-4eb6-4acc-884e-78d5fe8dbb6d', N'asd', N'asdasd', N'98asdf55656', N'', N'', N'', N'', 1, CAST(N'2024-07-18T16:06:21.0982185' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'f8dea3ec-e2af-4063-910b-78d8ff42de42', N'string', N'string', N'assasa', N'string', N'string', N'string', N'string', 1, CAST(N'2024-07-18T04:04:12.4250283' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'da89fe23-8a22-49bd-9434-7d0e068e80c3', N'string', N'string', N'string', NULL, NULL, NULL, NULL, 1, CAST(N'2024-07-17T17:34:41.3546965' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'9a4c4d1a-586a-4be9-96a2-7d23266c1d2b', N'danilo', N'cat', N'40123123', N'351121212', N'colon', N'86', N'500', 1, CAST(N'2024-07-13T17:13:26.0978510' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'2c8d812e-1536-4ef3-8f62-7d95db1c9cd8', N'AlbPrueba', N'fdfss', N'4234', N'53246', N'dfjsf', N'1', N'2313', 1, CAST(N'2024-07-16T00:00:00.0000000' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'7ae17516-bb16-41c9-92c8-842d512b9a5f', N'ss', N'ss', N'123', N'456', N'asd', N'6565', N'098', 1, CAST(N'2024-07-15T21:15:06.3849563' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'57b8ce3d-baa1-4e95-a501-861c1dae658b', N'Bustamant', N'Cattaneo', N'asd', N'asd', N'asd', N'asd', NULL, 1, CAST(N'2024-07-13T17:47:00.9475630' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'1a39e2b2-7ab0-4578-b47b-87d5687fc96b', N'Nico', N'H', N'3355740', N'123456', NULL, NULL, NULL, 1, NULL)
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'd0586a8f-40c9-43e3-938e-89c26882e947', N'string', N'string', N'88888888', NULL, NULL, NULL, NULL, 1, CAST(N'2024-07-18T11:31:34.3200321' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'e4e7e5de-9e89-4497-8566-8c2426475af9', N'danilo', N'perez', N'12123123', N'12123123', N'colon', N'12', NULL, 1, CAST(N'2024-07-13T17:44:35.6409930' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'bfee8160-fb8c-4522-b7c7-8c2590051fc9', N'Daron', N'Acuña', N'123', N'456', N'no se ', N'987', N'926', 1, CAST(N'2024-07-15T21:24:33.2405088' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'95145273-ca35-4101-b74c-8d0598b096f7', N'Luca', N'pruebaaaaa1111', N'43121212', N'2966331010', N'aasds', N'2', NULL, 1, CAST(N'2024-07-18T19:24:05.8024325' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'c2710420-844b-4d7a-9c4c-8d52f7ea1803', N'jose', N'der', N'48926652', N'3514778158', N'nube', N'1547', N'4005', 1, CAST(N'2024-07-16T14:33:40.0458552' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'2cd34351-c351-43b3-9aca-8f77d1ef8e53', N'joaquin', N'benegas', N'123', N'456', N'asd', N'789', N'927', 1, CAST(N'2024-07-15T21:18:56.1509075' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'a0cf31be-b62b-4cb3-b135-90bc4285c63b', N'pruebalta', N'pruebalta', N'12312312', N'123123', N'asdasd', N'1231', N'2412', 1, CAST(N'2024-07-18T19:45:51.4051028' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'66ef0df6-d8f3-46b2-a57b-94e0ce1c329b', N'string', N'string', N'141414', N'string', N'string', N'string', N'string', 1, CAST(N'2024-07-18T03:06:50.3683431' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'03170703-0951-4c6f-9864-94e6975c6fdd', N'Jorge', N'Guitierrez', N'17598465', N'351467985', N'Calle', N'0', N'4587', 0, NULL)
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'd87d83c4-6760-4b2b-8e68-96605cf6e865', N'PruebaAPiResponse', N'Alta', N'43121212', N'2', N'asdas', N'2', N'2', 1, CAST(N'2024-07-18T20:51:44.8662193' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'0436b944-c297-4f74-82f3-9a2e1207de95', N'string', N'string', N'string', N'string', N'string', N'string', N'string', 1, CAST(N'2024-07-13T18:09:30.0000780' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'836aa61e-709e-4ea4-901c-9d558442bbd6', N'Alexis', N'Testin', N'9563', N'351', N'assa', N'153', N'45536', 1, CAST(N'2024-07-18T03:01:29.9552914' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'57d5499f-39d9-4b64-b7de-a02382f297c5', N'as', N'sa', N'1414', N'14114', N'asas', N'1414', N'1414', 1, CAST(N'2024-07-18T11:24:34.5167982' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'7549ed82-be1e-48b4-8bf3-a025de83ea52', N'joaquin', N'frontier', N'465879', NULL, NULL, NULL, NULL, 1, CAST(N'2024-07-18T11:48:23.4024568' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'a2eea8c1-9865-475d-837f-a7e00c128840', N'string', N'string', N'strinasdasdllllg', N'string', N'string', N'string', N'string', 1, CAST(N'2024-07-18T04:54:11.7921379' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'2945e80e-ebe1-4fad-acdb-a9c8b34f9ed6', N'Alexis', N'Testing', N'89563', N'5686', N'Savio', N'Test', N'5000', 1, CAST(N'2024-07-18T02:41:39.1737688' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'7e40e7b8-207e-431a-b0ad-aaf044755756', N'Jorge', N'Lopez', N'15865134', N'351467985', N'Calle', N'465', N'8000', 1, CAST(N'2024-07-15T15:37:19.1125731' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'aba8f9a3-83fb-4704-a20b-aaf045b65676', N'joaquin', N'front', N'segundo', NULL, NULL, NULL, NULL, 1, CAST(N'2024-07-18T11:47:29.9189284' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'12ba94aa-222d-4276-b23c-b1dc74921170', N'prueba1873', N'aaa', N'43273827', N'2222222222', N'aasd', N'22', NULL, 1, CAST(N'2024-07-18T19:30:57.0281296' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'42d1896b-989e-4e25-8f58-b4f4f89ff2ec', N'assa', N'saasas', N'14141', N'14141', N'asasas', N'441414', N'41414141', 1, CAST(N'2024-07-18T13:44:33.6858979' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'a370b1b7-7b97-4328-a517-bd6069eace81', N'pepeeeeee', N'dasdaasdasdaaaaaa', N'string', N'string', N'string', N'string', N'string', 1, CAST(N'2024-07-18T18:11:29.2834958' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'1bcd77ef-0b32-4ac8-b632-c2a40e87ff0d', N'string', N'string', N'45454545', N'string', N'string', N'string', N'string', 1, CAST(N'2024-07-18T04:16:58.0109727' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'4d7e38d5-befc-4585-be47-c32ff8869863', N'Jorge', N'Perez', N'15465134', N'351467985', N'Calle', N'465', N'8000', 1, CAST(N'2024-07-15T15:35:39.1375929' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'7923d87a-db60-41b5-bc12-c5fa1908f4cf', N'TestingParcial', N'testing', N'12324324535', N'12312312321', N'cualquier', N'2232', N'5012', 1, CAST(N'2024-07-17T19:49:25.9358875' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'56d1244d-511a-4cb9-ae91-c72daac31f96', N'string', N'string', N'string', N'string', N'string', N'string', N'string', 1, CAST(N'2024-07-13T02:40:23.2940000' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'15c7a626-e714-466e-bb2a-cc488a014bfb', N'Jorge', N'Gomez', N'18465798', N'351467985', N'Calle', N'20', N'4587', 1, CAST(N'2024-07-15T15:26:45.0422190' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'cabab79a-2746-433e-8444-d9138d540daa', N'asdeasd', N'asdasd', N'43412312', N'123', N'asd', N'21', NULL, 1, CAST(N'2024-07-18T19:30:04.2307747' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'fa0202e0-d5a1-4f0f-be82-e99375554194', N'pepe', N'juarez', N'122345234', N'351222111222', N'colon', N'86', N'5021', 1, CAST(N'2024-07-13T17:12:22.7366330' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'2501745e-e72a-4f4f-a606-eb81a7f3e42f', N'albanilsinobra', N'pepito', N'string', N'string', N'string', N'string', N'string', 1, CAST(N'2024-07-17T20:27:44.9500000' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'fe87749d-c24f-4514-a4ef-ed466880ed39', N'prueba432', N'aaaa', N'2321231', N'2222222222', N'aaa', N'123', N'3212', 1, CAST(N'2024-07-18T19:34:36.4225428' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'dbabed41-daab-4628-8fa0-ed5caa88b02e', N'sadasd', N'asdasd', N'156156516', NULL, NULL, NULL, NULL, 1, NULL)
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'a6f75420-7f0f-4f2b-9ff9-edba01ed8bf1', N'Front', N'dfs', N'475', N'53246', N'jk', N'32', N'2313', 1, CAST(N'2024-07-16T00:00:00.0000000' AS DateTime2))
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'ce5d875f-ca51-4dbe-9988-efb804b0a8a9', N'fffffffffffff', N'ffffffffffffffffff', N'11111111111', NULL, NULL, NULL, NULL, 1, NULL)
+GO
+INSERT [dbo].[albaniles] ([Id], [Nombre], [Apellido], [Dni], [Telefono], [Calle], [Numero], [CodPost], [Activo], [FechaAlta]) VALUES (N'5cbc7d41-5db0-45d2-9efd-f72bbfa18812', N'sasa', N'assaas', N'1422', N'1414', N'sdasa', N'142', N'14141', 1, CAST(N'2024-07-18T15:35:52.0820233' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'00000000-0000-0000-0000-000000000000', N'9a4c4d1a-586a-4be9-96a2-7d23266c1d2b', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'pruebaaaaaaaaa', CAST(N'2024-07-16T18:04:39.7752941' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'f1d94e25-d5e1-43fa-8184-0049f549d067', N'9a4c4d1a-586a-4be9-96a2-7d23266c1d2b', N'20dcd74d-bd48-4bb0-b397-a93ff37e465d', N'prueba', CAST(N'2024-07-16T02:24:40.8167836' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'5df41eb2-3102-49be-9bb2-0113a3091648', N'9a4c4d1a-586a-4be9-96a2-7d23266c1d2b', N'20dcd74d-bd48-4bb0-b397-a93ff37e465d', N'limpieza', CAST(N'2024-07-13T17:16:06.4131540' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'a4b90ae0-c67e-412a-b7c7-02a555f028cf', N'ef359869-326f-4f1c-a278-49a533a747cd', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'Mantenimiento', CAST(N'2024-07-17T17:01:22.0315021' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'968f8c59-dec7-436c-a29a-0716adccdd49', N'92f2b727-5a68-4543-be92-2805cf3fecc1', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'practicar para el recuperatorio', CAST(N'2024-07-17T03:15:45.0277669' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'e4b9f6c4-c2f0-4e43-49a4-08dca378cf3c', N'09abb29f-d75b-4eef-de97-08dca37879fc', N'e4c21152-65f5-4d96-b5b2-32d23f036781', N'Revoque, Pintura', CAST(N'2024-07-13T17:17:24.5672180' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'b25563a4-9ed8-4b77-cbe6-08dca50b00c1', N'09abb29f-d75b-4eef-de97-08dca37879fc', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'Estructura', CAST(N'2024-07-15T17:16:25.0271720' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'b500a77a-f432-46f9-b65d-08fe0fd61827', N'70846e23-8631-49fc-b2fd-68f52e68d295', N'774ac152-30d5-4a40-ba38-48b457805c8e', N'cavar', CAST(N'2024-07-14T23:25:18.7142777' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'e36927b5-c9e5-49ec-bc79-0b240386210e', N'334a74fd-7e6e-4ad4-8374-760e5b22da54', N'20dcd74d-bd48-4bb0-b397-a93ff37e465d', N'Obrero', CAST(N'2024-07-15T22:18:47.0927063' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'2e4eddb0-d1c7-404a-8269-0d13a8659900', N'fa0202e0-d5a1-4f0f-be82-e99375554194', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'aaaaaaaaaaa', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'fb6c9b08-5c91-4479-a190-1657d2ee8023', N'52225e41-b38e-4c31-b595-012297dd351a', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'stringstringstringstringstringstring', CAST(N'2024-07-15T19:53:49.6412710' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'845c4394-07e8-41f2-8acb-16c437e19a17', N'5d6a752c-5e71-4e4b-ab3c-697803ec5ee5', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'sssssss', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'cc34db8e-850e-4472-92fe-184097129676', N'70846e23-8631-49fc-b2fd-68f52e68d295', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'sadsad', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'7d10360c-b4b0-42d1-8b1b-1e689a3d5bd1', N'bfee8160-fb8c-4522-b7c7-8c2590051fc9', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'aaaaa', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'93596ae3-996f-4b63-b822-1f5a4c3e839e', N'92f2b727-5a68-4543-be92-2805cf3fecc1', N'e4c21152-65f5-4d96-b5b2-32d23f036781', N'Mantenimiento', CAST(N'2024-07-17T17:03:18.8753559' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'781fb14b-aded-459f-be5b-241a673a6bf5', N'dbabed41-daab-4628-8fa0-ed5caa88b02e', N'e4c21152-65f5-4d96-b5b2-32d23f036781', N'lul', CAST(N'2024-07-15T20:31:37.6935499' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'3fa85f64-5717-4562-b3fc-2c963f66afa1', N'9a4c4d1a-586a-4be9-96a2-7d23266c1d2b', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'string', CAST(N'2024-07-16T18:18:35.1035047' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'3fa85f64-5717-4562-b3fc-2c963f66afa6', N'3fa85f64-5717-4562-b3fc-2c963f66afa6', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'limpiar', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'3fa85f64-5717-4562-b3fc-2c963f66afa9', N'9a4c4d1a-586a-4be9-96a2-7d23266c1d2b', N'20dcd74d-bd48-4bb0-b397-a93ff37e465d', N'tareaDePueba2', CAST(N'2024-07-16T03:21:44.7634017' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'af1baf18-f08b-4e8e-b381-2def28ad9fdc', N'88d238aa-3d36-43e8-84cc-460fc12b701b', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'asasdasdasdas', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'f252f4d2-bff8-42a2-9478-3734e52efd5c', N'3fa85f64-5717-4562-b3fc-2c963f66afa6', N'e4c21152-65f5-4d96-b5b2-32d23f036781', N'ningunaa', CAST(N'2024-07-17T22:36:20.3252806' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'8ba56b38-38ad-4e62-84a1-394462e41dce', N'a2eea8c1-9865-475d-837f-a7e00c128840', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'string', CAST(N'2024-07-18T04:54:26.1581994' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'd9417d92-6916-4ec7-a42b-3d2fbe0e75d6', N'52225e41-b38e-4c31-b595-012297dd351a', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'asdasdas', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'5c280edb-3754-4c72-84db-42c8f5bde176', N'73122b48-68c2-421c-81dd-145f765ab95d', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'string', CAST(N'2024-07-18T20:02:57.9138829' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'19e0785f-7c40-451d-912a-4698c04737e7', N'0436b944-c297-4f74-82f3-9a2e1207de95', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'asdad', CAST(N'2024-07-16T21:02:56.6526161' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'25863171-2e49-41ae-9110-4c7ca8860be3', N'3fa85f64-5717-4562-b3fc-2c963f66afa6', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'sasaasassa', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'3ff58f8a-2ba8-43d9-a1c3-4ea07772af44', N'2c8d812e-1536-4ef3-8f62-7d95db1c9cd8', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'werfwef', CAST(N'2024-07-18T15:27:17.1106604' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'7c50f541-272f-4aa2-aef4-50abdfc76a60', N'00e34506-80cc-4c2b-9b1b-269ffdb2a67e', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'string', CAST(N'2024-07-16T20:45:00.5562560' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'5638566d-e3f0-4a33-b68e-53e02a9c7819', N'70846e23-8631-49fc-b2fd-68f52e68d295', N'20dcd74d-bd48-4bb0-b397-a93ff37e465d', N'Lo que vos quieras', CAST(N'2024-07-15T21:13:01.5353182' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'18c27733-e6b1-4df5-987d-54caeb44f330', N'2501745e-e72a-4f4f-a606-eb81a7f3e42f', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'hacer edificio', CAST(N'2024-07-17T20:27:32.5730000' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'63d4429d-9a4e-4c65-9a2a-561b90efbc64', N'70846e23-8631-49fc-b2fd-68f52e68d295', N'20dcd74d-bd48-4bb0-b397-a93ff37e465d', N'Maestro mayor de obra', CAST(N'2024-07-15T21:15:58.4457841' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'3fdc3308-32ba-4ff8-ad95-588abb130bbe', N'fa0202e0-d5a1-4f0f-be82-e99375554194', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'Mantenimiento', CAST(N'2024-07-17T19:33:16.5485453' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'37c6a116-71e5-4501-ae8d-5d8472a1e6c8', N'7ae17516-bb16-41c9-92c8-842d512b9a5f', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'aaaaa', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'c8f7db0d-186a-4fa6-a780-66bdaa8aac65', N'feed1b12-d9f6-439e-a53f-13abbe36ae86', N'774ac152-30d5-4a40-ba38-48b457805c8e', N'sss', CAST(N'2024-07-15T20:05:05.4072454' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'94a00f11-7fad-424d-b471-672087358e3a', N'e4e7e5de-9e89-4497-8566-8c2426475af9', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N's', CAST(N'2024-07-15T20:09:25.4629139' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'fbdd5901-f20d-4b98-8646-6d963dca0dfe', N'f955852a-2cf1-4d80-8f61-2978624f6ef1', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'prueba de asignacion ', CAST(N'2024-07-18T20:17:57.0197866' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'4e7c4b52-7855-4236-8168-738c66feb5e1', N'88d238aa-3d36-43e8-84cc-460fc12b701b', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'asdsa', CAST(N'2024-07-16T22:03:45.9082264' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'e165c2fb-bbf5-4471-9cd7-75a7a02eed6c', N'dbabed41-daab-4628-8fa0-ed5caa88b02e', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'sadasdsad', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'192d35c3-66ae-4b82-87e2-7b6c1161fc40', N'92f2b727-5a68-4543-be92-2805cf3fecc1', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'Probando', CAST(N'2024-07-18T20:01:16.2830208' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'9cc086b6-5258-4661-911a-7fd60f921ece', N'5c8bed7b-84d5-465d-91c7-38f449a441c2', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'string', CAST(N'2024-07-18T18:24:09.7290000' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'5943f148-e3d0-4808-9883-88968bd92d07', N'70846e23-8631-49fc-b2fd-68f52e68d295', N'e4c21152-65f5-4d96-b5b2-32d23f036781', N'cavar', CAST(N'2024-07-14T23:24:05.2051449' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'f80e78ed-bf4d-451e-8280-8ad1fcc0b8c4', N'2c8d812e-1536-4ef3-8f62-7d95db1c9cd8', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'pppp', CAST(N'2024-07-17T23:21:05.5706561' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'd14f0576-cbb0-4c86-a533-903ee0c9814f', N'56d1244d-511a-4cb9-ae91-c72daac31f96', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'fffffffffffff', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'24864648-a53f-4859-afe2-909825052d4d', N'feed1b12-d9f6-439e-a53f-13abbe36ae86', N'e4c21152-65f5-4d96-b5b2-32d23f036781', N'hacer la loza', CAST(N'2024-07-17T19:02:46.1769750' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'9f991574-0453-4ea0-afef-92f0b686b120', N'60e11097-4cac-4657-813c-74f3ac7c2db3', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'probando', CAST(N'2024-07-18T20:55:16.3881293' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'19c3babb-38d4-457c-9f5e-94ab2db48014', N'789b1e37-ef66-4a5d-a0a8-117eb153426f', N'e4c21152-65f5-4d96-b5b2-32d23f036781', N'hacer la loza', CAST(N'2024-07-17T19:01:50.7804238' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'348ba350-038f-4257-a5c5-9f4ac2b3c6ca', N'4c63e86f-814e-4155-b422-64b0004b71d6', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'todo', CAST(N'2024-07-17T17:48:49.9875593' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'de0a70fb-7ef4-4c56-a269-a2e15d38e50e', N'57b8ce3d-baa1-4e95-a501-861c1dae658b', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'asdasdasdas', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'0423407b-efad-4748-bd02-a31e0aa089cc', N'0f65feb4-9eb0-4c8c-944d-591a6b98a4d6', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'aaaaaa', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'e492e1a8-248f-4663-86a5-a3bc98f8a1e5', N'dbabed41-daab-4628-8fa0-ed5caa88b02e', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'ffffffffffffffffff', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'eb443849-cbac-452f-a853-a44c3e668a40', N'ce5d875f-ca51-4dbe-9988-efb804b0a8a9', N'e4c21152-65f5-4d96-b5b2-32d23f036781', N'aaaaaaaaa', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'4752354d-0e7a-4784-a468-a995c51f5d20', N'a6f75420-7f0f-4f2b-9ff9-edba01ed8bf1', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'ffffffffffffffffff', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'd0e0384f-e4f8-4db7-9ea7-b0c92bd0f980', N'52225e41-b38e-4c31-b595-012297dd351a', N'774ac152-30d5-4a40-ba38-48b457805c8e', N'string', CAST(N'2024-07-17T22:42:26.2015646' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'df2486d3-7119-4c16-96cd-b0e2414d409f', N'789b1e37-ef66-4a5d-a0a8-117eb153426f', N'774ac152-30d5-4a40-ba38-48b457805c8e', N'construir casa', CAST(N'2024-07-17T17:20:16.7873701' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'cd3fd4e6-fef4-444a-884c-b4c439d19a56', N'3fa85f64-5717-4562-b3fc-2c963f66afb4', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'asdad', CAST(N'2024-07-16T21:02:13.6915688' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'f8d01aee-c2b8-443f-aebd-b6ce4e0f34d4', N'3ec9ee99-a56d-42ca-9321-4a13b7b3b7b4', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'string', CAST(N'2024-07-18T18:16:30.5520000' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'2a485f63-2ddf-4cc4-bdc5-b82cba767538', N'777f2f70-f2d2-4862-9cca-3234a1ec0c57', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'prueba de asignacion', CAST(N'2024-07-18T20:50:48.1288810' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'dec936e5-7244-4a69-9164-b8506bcc6358', N'bfee8160-fb8c-4522-b7c7-8c2590051fc9', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'asdasd', CAST(N'2024-07-15T21:24:49.8751943' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'f1248166-63a3-4089-b734-b8f65cf7d551', N'52225e41-b38e-4c31-b595-012297dd351a', N'20dcd74d-bd48-4bb0-b397-a93ff37e465d', N'Obrero', CAST(N'2024-07-15T22:19:51.4080540' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'2ef3d14a-24dc-4044-aaf5-b961b40e8bc6', N'7ae17516-bb16-41c9-92c8-842d512b9a5f', N'20dcd74d-bd48-4bb0-b397-a93ff37e465d', N'Levantar pared', CAST(N'2024-07-15T21:19:56.1423038' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'0453a221-083e-4da6-933b-bc3ce97074e9', N'9fb93465-9742-4303-9d34-654df79f8463', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'nada', CAST(N'2024-07-17T17:26:11.4371698' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'943a1132-e992-4abe-ae56-bd08360db0ae', N'9a4c4d1a-586a-4be9-96a2-7d23266c1d2b', N'e4c21152-65f5-4d96-b5b2-32d23f036781', N'string', CAST(N'2024-07-18T04:33:25.3874110' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'fcb91488-121c-4cd6-94fe-bdc8f97dc4a6', N'9a4c4d1a-586a-4be9-96a2-7d23266c1d2b', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'string', CAST(N'2024-07-18T04:30:08.6055680' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'e340ef7a-aeed-4c7e-a920-bf527e145a35', N'f955852a-2cf1-4d80-8f61-2978624f6ef1', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'aaaaa', CAST(N'2024-07-18T20:43:42.4752209' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'35dba1a9-17a2-4726-88a7-c8ca99f2e5fa', N'3fa85f64-5717-4562-b3fc-2c963f66afa7', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'asdas', CAST(N'2024-07-16T22:01:35.6875537' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'bd5d807c-3427-4228-9d8a-cb805f3a13cc', N'15c7a626-e714-466e-bb2a-cc488a014bfb', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'aaaaaaaaaaaaaaaaa', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'14a87a94-8b9e-455c-aea2-cd1950801633', N'da89fe23-8a22-49bd-9434-7d0e068e80c3', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'dd', CAST(N'2024-07-17T17:35:22.2432049' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'f792035b-4aea-447b-9bbb-d25612f646f0', N'56d1244d-511a-4cb9-ae91-c72daac31f96', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'pruebaTest', CAST(N'2024-07-17T19:48:37.1206539' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'0bf61652-2162-4c64-a669-dc9ccc4a5496', N'52225e41-b38e-4c31-b595-012297dd351a', N'e4c21152-65f5-4d96-b5b2-32d23f036781', N'sadasdsa', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'e303ccda-2e1d-4105-aa45-eaf465a4730d', N'334a74fd-7e6e-4ad4-8374-760e5b22da54', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'pruebaaaaaa', CAST(N'2024-07-16T18:20:07.1486524' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'6b72136e-4c3e-4473-b5ec-f6856c2c74c4', N'ce5d875f-ca51-4dbe-9988-efb804b0a8a9', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'aaaaaaaaaa', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'e8827592-cf10-4cd0-9137-f73215b7fed2', N'f487ac1e-6a22-41ce-92e3-2ec6d4150a96', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'aaaaa', CAST(N'2024-07-18T20:43:57.9193568' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'2f4f008d-cf80-474f-b34c-f733c6ec9762', N'789b1e37-ef66-4a5d-a0a8-117eb153426f', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N';;;;llplplpokk', CAST(N'2024-07-17T23:21:47.3583937' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'e98adf62-6af0-453c-b4a3-fa5ef6e180bd', N'9a4c4d1a-586a-4be9-96a2-7d23266c1d2b', N'20dcd74d-bd48-4bb0-b397-a93ff37e465d', N'string', CAST(N'2024-07-16T03:26:28.7556441' AS DateTime2))
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'63a9a6dc-6f85-4e17-8d91-fb2976c4ad90', N'feed1b12-d9f6-439e-a53f-13abbe36ae86', N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'sadsad', NULL)
+GO
+INSERT [dbo].[albaniles_x_obras] ([Id], [IdAlbanil], [IdObra], [TareaARealizar], [FechaAlta]) VALUES (N'50188bfe-c2ef-4e32-8be9-fbbdfba6a310', N'70846e23-8631-49fc-b2fd-68f52e68d295', N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'asaaasa', NULL)
+GO
+INSERT [dbo].[obras] ([Id], [Nombre], [DatosVarios], [IdTipoObra]) VALUES (N'19b6e3ae-585a-44aa-9281-13d33fd73101', N'Torre del SOL', N'Torre de deptos. en Mar del Plata', N'a99e5747-faf1-4199-ae6b-2c748dfd621d')
+GO
+INSERT [dbo].[obras] ([Id], [Nombre], [DatosVarios], [IdTipoObra]) VALUES (N'e4c21152-65f5-4d96-b5b2-32d23f036781', N'Oasis polar', N'Un gran edificio en Tierra del fuego', N'a99e5747-faf1-4199-ae6b-2c748dfd621d')
+GO
+INSERT [dbo].[obras] ([Id], [Nombre], [DatosVarios], [IdTipoObra]) VALUES (N'774ac152-30d5-4a40-ba38-48b457805c8e', N'La gran casa', N'Un gran casa a desarrollar', N'084b05a9-d8c0-4916-9de4-9db4c30e2ae9')
+GO
+INSERT [dbo].[obras] ([Id], [Nombre], [DatosVarios], [IdTipoObra]) VALUES (N'2bec4ff7-d5b8-4218-a1e1-57bd2e86970e', N'Torre GAMA', N'Gran torre gama', N'a99e5747-faf1-4199-ae6b-2c748dfd621d')
+GO
+INSERT [dbo].[obras] ([Id], [Nombre], [DatosVarios], [IdTipoObra]) VALUES (N'20dcd74d-bd48-4bb0-b397-a93ff37e465d', N'Shopping el ALTO', N'Shopping ubicado en zona norte de córdoba', N'c7b2ce19-1006-40d3-a77f-05a4237c04ec')
+GO
+INSERT [dbo].[tipos_obras] ([Id], [Nombre]) VALUES (N'c7b2ce19-1006-40d3-a77f-05a4237c04ec', N'Local Comercial')
+GO
+INSERT [dbo].[tipos_obras] ([Id], [Nombre]) VALUES (N'a99e5747-faf1-4199-ae6b-2c748dfd621d', N'Edificio')
+GO
+INSERT [dbo].[tipos_obras] ([Id], [Nombre]) VALUES (N'084b05a9-d8c0-4916-9de4-9db4c30e2ae9', N'Casa')
+GO
+/****** Object:  Index [IX_albaniles_x_obras_IdAlbanil]    Script Date: 18/07/2024 18:15:05 ******/
+CREATE NONCLUSTERED INDEX [IX_albaniles_x_obras_IdAlbanil] ON [dbo].[albaniles_x_obras]
+(
+	[IdAlbanil] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_albaniles_x_obras_IdObra]    Script Date: 18/07/2024 18:15:05 ******/
+CREATE NONCLUSTERED INDEX [IX_albaniles_x_obras_IdObra] ON [dbo].[albaniles_x_obras]
+(
+	[IdObra] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_obras_IdTipoObra]    Script Date: 18/07/2024 18:15:05 ******/
+CREATE NONCLUSTERED INDEX [IX_obras_IdTipoObra] ON [dbo].[obras]
+(
+	[IdTipoObra] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_socios_IdDeporte]    Script Date: 18/07/2024 18:15:05 ******/
+CREATE NONCLUSTERED INDEX [IX_socios_IdDeporte] ON [dbo].[socios]
+(
+	[IdDeporte] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_usuarios_IdRol]    Script Date: 18/07/2024 18:15:05 ******/
+CREATE NONCLUSTERED INDEX [IX_usuarios_IdRol] ON [dbo].[usuarios]
+(
+	[IdRol] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[albaniles_x_obras]  WITH CHECK ADD  CONSTRAINT [FK_albaniles_x_obras_albaniles_IdAlbanil] FOREIGN KEY([IdAlbanil])
+REFERENCES [dbo].[albaniles] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[albaniles_x_obras] CHECK CONSTRAINT [FK_albaniles_x_obras_albaniles_IdAlbanil]
+GO
+ALTER TABLE [dbo].[albaniles_x_obras]  WITH CHECK ADD  CONSTRAINT [FK_albaniles_x_obras_obras_IdObra] FOREIGN KEY([IdObra])
+REFERENCES [dbo].[obras] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[albaniles_x_obras] CHECK CONSTRAINT [FK_albaniles_x_obras_obras_IdObra]
+GO
+ALTER TABLE [dbo].[obras]  WITH CHECK ADD  CONSTRAINT [FK_obras_tipos_obras_IdTipoObra] FOREIGN KEY([IdTipoObra])
+REFERENCES [dbo].[tipos_obras] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[obras] CHECK CONSTRAINT [FK_obras_tipos_obras_IdTipoObra]
+GO
+ALTER TABLE [dbo].[socios]  WITH CHECK ADD  CONSTRAINT [FK_socios_deportes_IdDeporte] FOREIGN KEY([IdDeporte])
+REFERENCES [dbo].[deportes] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[socios] CHECK CONSTRAINT [FK_socios_deportes_IdDeporte]
+GO
+ALTER TABLE [dbo].[usuarios]  WITH CHECK ADD  CONSTRAINT [FK_usuarios_roles_IdRol] FOREIGN KEY([IdRol])
+REFERENCES [dbo].[roles] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[usuarios] CHECK CONSTRAINT [FK_usuarios_roles_IdRol]
+GO
+USE [master]
+GO
+ALTER DATABASE [db_aa579f_prog3w2] SET  READ_WRITE 
+GO

@@ -1,0 +1,23 @@
+body{
+    background-color: rgb(240, 248, 255);
+}
+
+label.error{
+    color: red;
+}
+
+input.error{
+    border: 1px solid red;
+}
+
+input.valid{
+    border: 1px solid green;
+}
+
+select.valid{
+    border: 1px solid green;
+}
+
+select.error{
+    border: 1px solid red;
+}
